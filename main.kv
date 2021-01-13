@@ -1,0 +1,37 @@
+#:import random random
+
+<SnakePart>:
+    size: 40, 40
+    canvas.before:
+        Color:
+            rgb: random.random(), random.random(), random.random()
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+GameScreen:
+    canvas.before:
+        Color:
+            rgb: 1, 1 ,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Widget:
+        id: food
+        size: 40,40
+        pos: 100,100
+        canvas.before:
+            Color:
+                rgba: random.random(), random.random(), random.random(), 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    Label:
+        id: score
+        font_size: 28
+        color: 0,0,0,1 # r,g,b,a (a = alpha, define a opacidade)
+        text: 'Score: {}'.format(self.parent.score)
+        pos: 10, root.height - 75
+
+
